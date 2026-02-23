@@ -14,7 +14,116 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      cart_items: {
+        Row: {
+          created_at: string
+          id: string
+          product_id: string
+          quantity: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          product_id: string
+          quantity?: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          product_id?: string
+          quantity?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cart_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      products: {
+        Row: {
+          artist: string
+          condition: string
+          cover_url: string | null
+          created_at: string
+          description: string | null
+          genre: string
+          id: string
+          price: number
+          quality_seal: string | null
+          stock: number
+          title: string
+          year: number | null
+        }
+        Insert: {
+          artist: string
+          condition?: string
+          cover_url?: string | null
+          created_at?: string
+          description?: string | null
+          genre?: string
+          id?: string
+          price?: number
+          quality_seal?: string | null
+          stock?: number
+          title: string
+          year?: number | null
+        }
+        Update: {
+          artist?: string
+          condition?: string
+          cover_url?: string | null
+          created_at?: string
+          description?: string | null
+          genre?: string
+          id?: string
+          price?: number
+          quality_seal?: string | null
+          stock?: number
+          title?: string
+          year?: number | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          address: string | null
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          address?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          address?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
